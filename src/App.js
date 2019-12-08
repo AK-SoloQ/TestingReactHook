@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import './App.css';
 // The Use State Components
 import ClassState from './components/useState/ClassState'
@@ -10,22 +10,34 @@ import Todo from './components/useState/Todo'
 import FunctionCount from './components/useEffect/FunctionCount'
 import Container from './components/useEffect/Container'
 
+// Import Context
+import { UserContext, ColorContext } from './components/Contexte/MyContext'
+import Profile from './components/Contexte/Profile'
+
 // Bootstarp Elements
 import { Tabs, Tab } from 'react-bootstrap';
 
 // Main Function
 function App() {
+  const [user, setUser] = useState({
+    name: 'Lisa simpsion',
+    age: 8
+  })
   return (
     <div className="container mt-4">
-      <Tabs defaultActiveKey="useState" id="uncontrolled-tab-example">
+      <Tabs defaultActiveKey="Context" id="uncontrolled-tab-example">
         <Tab eventKey="useState" title="useState">
           <UseState></UseState>
         </Tab>
         <Tab eventKey="useEffect" title="useEffect">
           <UseEffect></UseEffect>
         </Tab>
-        <Tab eventKey="other" title="other">
-          Zone 3
+        <Tab eventKey="Context" title="Context">
+          <UserContext.Provider value={user}>
+            <ColorContext.Provider value={'red'}>
+              <Profile />
+            </ColorContext.Provider>
+          </UserContext.Provider>
         </Tab>
       </Tabs>
 
