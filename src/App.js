@@ -14,6 +14,9 @@ import Container from './components/useEffect/Container'
 import { UserContext, ColorContext } from './components/Contexte/MyContext'
 import Profile from './components/Contexte/Profile'
 
+// Import Reducer
+import Count from './components/Reducer/Count'
+
 // Bootstarp Elements
 import { Tabs, Tab } from 'react-bootstrap';
 
@@ -25,7 +28,7 @@ function App() {
   })
   return (
     <div className="container mt-4">
-      <Tabs defaultActiveKey="Context" id="uncontrolled-tab-example">
+      <Tabs defaultActiveKey="Reducer" id="uncontrolled-tab-example">
         <Tab eventKey="useState" title="useState">
           <UseState></UseState>
         </Tab>
@@ -38,6 +41,9 @@ function App() {
               <Profile />
             </ColorContext.Provider>
           </UserContext.Provider>
+        </Tab>
+        <Tab eventKey="Reducer" title="Reducer">
+          <Count />
         </Tab>
       </Tabs>
 
