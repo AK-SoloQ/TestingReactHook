@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useCallback } from 'react';
 import './App.css';
 // The Use State Components
 import ClassState from './components/useState/ClassState'
@@ -33,13 +33,13 @@ function App() {
   const [countOne, setCountOne] = useState({ value: 0, btnColor: 'success', increment: 25 })
   const [countTwo, setCountTwo] = useState({ value: 0, btnColor: 'danger', increment: 20 })
 
-  const incrementCountOne = (val) => {
+  const incrementCountOne = useCallback((val) => {
     console.log('val', val)
     countOne.value < 100 && setCountOne({ ...countOne, value: countOne.value + val })
-  }
-  const incrementCountTwo = (val) => {
+  }, [countOne])
+  const incrementCountTwo = useCallback((val) => {
     countTwo.value < 100 && setCountTwo({ ...countTwo, value: countTwo.value + val })
-  }
+  }, [countTwo])
   return (
     <div className="container mt-4">
       <Tabs defaultActiveKey="Callback" id="uncontrolled-tab-example">

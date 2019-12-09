@@ -13,4 +13,4 @@ function Progress({ value, btnColor }) {
       )
 }
 
-export default Progress;
+export default React.memo(Progress);

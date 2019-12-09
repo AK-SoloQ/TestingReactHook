@@ -8,4 +8,4 @@ function Button({ btnColor, increment, children, handleClick, value }) {
       )
 }
 
-export default Button;
+export default React.memo(Button);
