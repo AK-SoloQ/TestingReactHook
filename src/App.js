@@ -17,6 +17,10 @@ import Profile from './components/Contexte/Profile'
 // Import Reducer
 import Count from './components/Reducer/Count'
 
+// Improt CallBack
+import Button from './components/Callback/Button'
+import Progress from './components/Callback/Progress'
+
 // Bootstarp Elements
 import { Tabs, Tab } from 'react-bootstrap';
 
@@ -26,9 +30,19 @@ function App() {
     name: 'Lisa simpsion',
     age: 8
   })
+  const [countOne, setCountOne] = useState({ value: 0, btnColor: 'success', increment: 25 })
+  const [countTwo, setCountTwo] = useState({ value: 0, btnColor: 'danger', increment: 20 })
+
+  const incrementCountOne = (val) => {
+    console.log('val', val)
+    countOne.value < 100 && setCountOne({ ...countOne, value: countOne.value + val })
+  }
+  const incrementCountTwo = (val) => {
+    countTwo.value < 100 && setCountTwo({ ...countTwo, value: countTwo.value + val })
+  }
   return (
     <div className="container mt-4">
-      <Tabs defaultActiveKey="Reducer" id="uncontrolled-tab-example">
+      <Tabs defaultActiveKey="Callback" id="uncontrolled-tab-example">
         <Tab eventKey="useState" title="useState">
           <UseState></UseState>
         </Tab>
@@ -44,6 +58,12 @@ function App() {
         </Tab>
         <Tab eventKey="Reducer" title="Reducer">
           <Count />
+        </Tab>
+        <Tab eventKey="Callback" title="Callback">
+          <Progress {...countOne}></Progress>
+          <Progress {...countTwo}></Progress>
+          <Button handleClick={incrementCountOne} {...countOne}>Count 1</Button>
+          <Button handleClick={incrementCountTwo} {...countTwo}>Count 2</Button>
         </Tab>
       </Tabs>
 
