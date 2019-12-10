@@ -21,6 +21,10 @@ import Count from './components/Reducer/Count'
 import Button from './components/Callback/Button'
 import Progress from './components/Callback/Progress'
 
+// Import Memo
+import ProfileMemo from './components/Memo/ProfileMemo'
+
+
 // Bootstarp Elements
 import { Tabs, Tab } from 'react-bootstrap';
 
@@ -42,7 +46,7 @@ function App() {
   }, [countTwo])
   return (
     <div className="container mt-4">
-      <Tabs defaultActiveKey="Callback" id="uncontrolled-tab-example">
+      <Tabs defaultActiveKey="Memo" id="uncontrolled-tab-example">
         <Tab eventKey="useState" title="useState">
           <UseState></UseState>
         </Tab>
@@ -64,6 +68,9 @@ function App() {
           <Progress {...countTwo}></Progress>
           <Button handleClick={incrementCountOne} {...countOne}>Count 1</Button>
           <Button handleClick={incrementCountTwo} {...countTwo}>Count 2</Button>
+        </Tab>
+        <Tab eventKey='Memo' title="Memo">
+          <ProfileMemo />
         </Tab>
       </Tabs>
 
