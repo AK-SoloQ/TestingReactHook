@@ -1,5 +1,4 @@
 import React, { useReducer } from 'react';
-import Emoji from 'a11y-react-emoji'
 
 const initialState = {
       countOne: 0,
@@ -39,7 +38,7 @@ function Count() {
                         <button className='btn btn-danger m-3' onClick={() => { dispatch({ type: 'decrement2', value: 20 }) }}>-</button>
                   </div>
                   <div className='col-12'>
-                        <button className='btn btn-warning btn-lg btn-block mt-5 bt-3' onClick={() => { dispatch({ type: 'rest' }) }}> <Emoji symbol="🔃" label="reload" /> </button>
+                        <button className='btn btn-warning btn-lg btn-block mt-5 bt-3' onClick={() => { dispatch({ type: 'rest' }) }}>Rest</button>
                   </div>
 
             </div>

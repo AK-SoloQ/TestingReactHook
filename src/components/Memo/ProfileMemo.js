@@ -38,7 +38,6 @@ function ProfileMemo() {
             console.log('je suis dans isOverTen')
             return count > 10
       }, [count])
-      console.log({ memoizedValue })
       /*const isOverTen = () => {
             console.log('je suis dans isOverTen')
             return count > 10
