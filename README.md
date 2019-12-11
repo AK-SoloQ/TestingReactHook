@@ -66,3 +66,70 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+## Learn Redux
+To learn React Redux , check out the [Redux documentation](https://react-redux.js.org/introduction/quick-start).
+
+Redux is available as a package on NPM for use with a module bundler or in a Node application:
+
+## Installation
+React Redux 7.1 requires React 16.8.3 or later.
+
+To use React Redux with your React app:
+
+> ### `npm install react-redux`
+
+or
+
+> ### `yarn add react-redux`
+
+You'll also need to install Redux and set up a Redux store in your app.
+
+## Provider
+React Redux provides `<Provider />`, which makes the Redux store available to the rest of your app:
+
+```
+ import React from 'react'
+ import ReactDOM from 'react-dom'
+
+ import { Provider } from 'react-redux'
+
+ import store from './store'
+
+ import App from './App'
+
+ const rootElement = document.getElementById('root')
+
+ ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  rootElement
+)
+```
+
+## Connect()
+React Redux provides a connect function for you to connect your component to the store.
+
+Normally, you’ll call connect in this way:
+
+```
+import { connect } from 'react-redux'
+import { increment, decrement, reset } from './actionCreators'
+
+// const Counter = ...
+
+const mapStateToProps = (state /*, ownProps*/) => {
+  return {
+    counter: state.counter
+  }
+}
+
+const mapDispatchToProps = { increment, decrement, reset }
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Counter)
+```

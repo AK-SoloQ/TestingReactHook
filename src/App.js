@@ -24,10 +24,17 @@ import Progress from './components/Callback/Progress'
 // Import Memo
 import ProfileMemo from './components/Memo/ProfileMemo'
 
-
+// Accueil Redux 
+import Accueil from './components/Accueil/Accueil'
+import Post from './components/Accueil/Post'
 // Bootstarp Elements
 import { Tabs, Tab } from 'react-bootstrap';
 
+// Add Router
+import { BrowserRouter, Route } from 'react-router-dom'
+
+// Import Menu 
+import Menu from './components/Menu/Menu'
 // Main Function
 function App() {
   const [user, setUser] = useState({
@@ -46,38 +53,39 @@ function App() {
   }, [countTwo])
   return (
     <div className="container mt-4">
-      <Tabs defaultActiveKey="Memo" id="uncontrolled-tab-example">
-        <Tab eventKey="useState" title="useState">
-          <UseState></UseState>
-        </Tab>
-        <Tab eventKey="useEffect" title="useEffect">
-          <UseEffect></UseEffect>
-        </Tab>
-        <Tab eventKey="Context" title="Context">
+      <BrowserRouter>
+        <Menu />
+        <Route path='/post/:post_id' component={Post}></Route>
+        <Route exact path='/' component={Accueil} ></Route>
+        <Route path='/useState' component={UseState}></Route>
+        <Route path='/useEffect' component={UseEffect}></Route>
+        <Route path='/useReduce' component={Count}></Route>
+        <Route path='/useMemo' component={ProfileMemo}></Route>
+        <Route path='/useCallback'>
+          <Progress {...countOne}></Progress>
+          <Progress {...countTwo}></Progress>
+          <Button handleClick={incrementCountOne} {...countOne}>Count 1</Button>
+          <Button handleClick={incrementCountTwo} {...countTwo}>Count 2</Button>
+        </Route>
+        <Route path='/context'>
           <UserContext.Provider value={user}>
             <ColorContext.Provider value={'red'}>
               <Profile />
             </ColorContext.Provider>
           </UserContext.Provider>
-        </Tab>
-        <Tab eventKey="Reducer" title="Reducer">
-          <Count />
-        </Tab>
-        <Tab eventKey="Callback" title="Callback">
-          <Progress {...countOne}></Progress>
-          <Progress {...countTwo}></Progress>
-          <Button handleClick={incrementCountOne} {...countOne}>Count 1</Button>
-          <Button handleClick={incrementCountTwo} {...countTwo}>Count 2</Button>
-        </Tab>
-        <Tab eventKey='Memo' title="Memo">
-          <ProfileMemo />
-        </Tab>
-      </Tabs>
-
-
-
-
-    </div>
+        </Route>
+        <Route path='/tabs'>
+          <Tabs defaultActiveKey="Memo" id="uncontrolled-tab-example">
+            <Tab eventKey='Memo2' title="Memo2">
+              <h1>Bonjour </h1>
+            </Tab>
+            <Tab eventKey='Memo' title="Memo">
+              <h1>HEll0 </h1>
+            </Tab>
+          </Tabs>
+        </Route>
+      </BrowserRouter>
+    </div >
   );
 }
 function UseState() {
